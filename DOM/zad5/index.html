@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Galeria z Lightbox</title>
+    <style>
+        .gallery {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        #lightbox-img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox-nav {
+            color: white;
+            font-size: 50px;
+            position: absolute;
+            top: 50%;
+            cursor: pointer;
+        }
+        #prev { left: 20px; }
+        #next { right: 20px; }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <img src="" alt="owo" onclick="openLightbox(0)">
+        <img src="att.5EHnj_6in4xA-7Q1psD_wbh6O-0aUpsyDXQSNMAQCzc.jpg" onclick="openLightbox(1)">
+        <img src="Unknown-2.jpg" onclick="openLightbox(2)">
+        <img src="Unknown.jpg" onclick="openLightbox(3)">
+    </div>
+
+    <div id="lightbox">
+        <div id="prev" class="lightbox-nav" onclick="changeImage(-1)">&#10094;</div>
+        <img id="lightbox-img">
+        <div id="next" class="lightbox-nav" onclick="changeImage(1)">&#10095;</div>
+        <div onclick="closeLightbox()" style="position: absolute; top: 15px; right: 35px; color: white; font-size: 40px; cursor: pointer;">&times;</div>
+    </div>
+
+    <script>
+        const images = Array.from(document.querySelectorAll('.gallery img'));
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxImg.src = images[index].src;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            lightboxImg.src = images[currentIndex].src;
+        }
+
+        // Obsługa klawiatury
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'ArrowRight') changeImage(1);
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

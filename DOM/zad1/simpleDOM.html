@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .dynamic-div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="divContainer">
+        <div class="dynamic-div">nowy</div>
+        <div class="dynamic-div">div</div>
+        <div class="dynamic-div">zmieni kolor</div>
+        <div class="dynamic-div">div</div>
+    </div>
+
+    <div>
+        <button onclick="addDiv()">Dodaj div</button>
+        <button onclick="removeDiv()">Usuń div</button>
+        <button onclick="changeThirdDivColor()">Zmień kolor</button>
+        <button onclick="updateAllDivText()">Aktualizuj tekst</button>
+    </div>
+
+    <script>
+        function addDiv() {
+            const container = document.getElementById('divContainer');
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('dynamic-div');
+            newDiv.textContent = `Div ${container.children.length + 1}`;
+            container.appendChild(newDiv);
+        }
+
+        function removeDiv() {
+            const container = document.getElementById('divContainer');
+            if (container.children.length > 0) {
+                container.removeChild(container.firstElementChild);
+            }
+        }
+
+        function changeThirdDivColor() {
+            const container = document.getElementById('divContainer');
+            if (container.children.length >= 3) {
+                container.children[2].style.backgroundColor = 'red';
+            }
+        }
+
+        function updateAllDivText() {
+            const container = document.getElementById('divContainer');
+            Array.from(container.children).forEach(div => {
+                div.textContent = 'cos';
+            });
+        }
+    </script>
+</body>
+</html>

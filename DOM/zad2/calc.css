@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8e8888;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    width: 50%;
+    height: 200px;
+    background-color: #bebaba;
+    box-sizing: border-box;
+}
+
+.display {
+    background-color: rgba(193, 245, 227, 0.767);
+    width: 100%;
+    height: 2em;
+    text-align: right;
+    line-height: 2em;
+    border: rgb(5, 124, 65) solid 2px;
+    color:rgb(5, 124, 65);
+    box-sizing: border-box;
+    font-size: 30px;
+}
+
+.calculations {
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.first, .second, .operator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.liczba {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    font-size: 30px;
+    border: none;
+    text-align: center;
+    border-radius: 2px;
+    border: solid 1px #8e8888;
+    appearance: none;
+}
+
+.dzialanie {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 2px;
+    border: solid 1px #8e8888;
+    appearance: none;
+    font-size: 30px;
+}
+
+.oblicz {
+    width: 50%;
+    background-color: #7c8d7c;
+    color: #ffffff;
+    font-size: 15px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.oblicz:hover {
+    background-color: #687168;
+}
